@@ -1,16 +1,25 @@
 {
-  "name": "test01",
-  "version": "1.0.0",
+  "name": "asset_mgt",
+  "version": "0.0.1",
+  "description": "AssetMgt",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "server-dev": "node src/index.js dev",
+    "server-prd": "node src/index.js prd"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.3",
-    "socket.io": "^4.8.1"
-  },
-  "description": ""
+    "connect-redis": "^6.1.1",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.1",
+    "express-session": "^1.17.2",
+    "ioredis": "^4.28.5",
+    "mariadb": "^3.0.1",
+    "nodejs-jsencrypt": "^3.0.0-rc.1",
+    "request": "^2.88.2",
+    "winston": "^3.8.2",
+    "winston-daily-rotate-file": "^4.7.1"
+  }
 }
