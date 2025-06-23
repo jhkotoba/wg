@@ -1,6 +1,6 @@
-const express = require("express");
+import express from "express";
+import { loginProcess, joinProcess } from "../controllers/loginController.js";
 const router = express.Router();
-const loginController = require(`${basePath}/controllers/loginController.js`)
 
 // 로그인 페이지
 router.get("/", async (request, response) => response.sendFile(`${public}/view/login/login.html`, {request}));
@@ -9,9 +9,9 @@ router.get("/", async (request, response) => response.sendFile(`${public}/view/l
 router.get("/join", async (request, response) => response.sendFile(`${public}/view/login/join.html`, {request}));
 
 // 로그인 처리
-router.post("/loginProcess", loginController.loginProcess);
+router.post("/loginProcess", loginProcess);
 
 // 회원가입 처리
-router.post("/joinProcess", loginController.joinProcess);
+router.post("/joinProcess", joinProcess);
 
-module.exports = router;
+export default router;

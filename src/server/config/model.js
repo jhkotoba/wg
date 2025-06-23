@@ -1,5 +1,5 @@
-const fs = require("fs");
-const logger = require(`${basePath}/config/logger.js`);
+import fs from "fs";
+import logger from "./logger.js";
 
 /**
  * 페이지 이동 세팅
@@ -7,7 +7,7 @@ const logger = require(`${basePath}/config/logger.js`);
  * @param {*} params 
  * @returns 
  */
-exports.modelAndView = function(path, params){
+export const modelAndView = function(path, params){
     return Promise.all([
         // 틀 페이지 가져오기
         new Promise((resolve, reject) => {

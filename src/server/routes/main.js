@@ -1,14 +1,14 @@
-const express = require("express");
+import express from "express";
+import { modelAndView } from "../config/model.js";
 const router = express.Router();
-const model = require(`${basePath}/config/model.js`);
 
-router.get('/', async (request, response) => response.send(await model.modelAndView('main/main.html', {request})));
+router.get('/', async (request, response) => response.send(await modelAndView('main/main.html', {request})));
 
 router.get('/logout', (request, response) => {
     request.session.destroy();
     response.sendFile(`${public}/view/login/login.html`);
 });
 
-module.exports = router;
+export default router;
 
 

@@ -4,7 +4,7 @@
  * @param {string} value 
  * @returns 
  */
- exports.isEmpty = value => {
+export const isEmpty = value => {
 	
 	if(value === null || value === undefined){
 		return true;
@@ -23,7 +23,7 @@
  * @param {string} value 
  * @returns 
  */
-exports.isPassword = value => /^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+]).{8,20}$/.test(String(value));
+export const isPassword = value => /^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+]).{8,20}$/.test(String(value));
 
 /**
  * 전화번호 형식 체크
@@ -31,7 +31,7 @@ exports.isPassword = value => /^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$`~!@$!%*#^?&\\(\
  * @param {string} value 
  * @returns 
  */
-exports.isPhone = value => /^[0-9]{2,3}-[0-9]{3,4}-[0-9]{4}/.test(String(value));
+export const isPhone = value => /^[0-9]{2,3}-[0-9]{3,4}-[0-9]{4}/.test(String(value));
 
 /**
  * 이메일 형식 체크
@@ -39,5 +39,5 @@ exports.isPhone = value => /^[0-9]{2,3}-[0-9]{3,4}-[0-9]{4}/.test(String(value))
  * @param {string} value 
  * @returns 
  */
-exports.isEmail = value => /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i.test(String(value));
+export const isEmail = value => /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i.test(String(value));
 

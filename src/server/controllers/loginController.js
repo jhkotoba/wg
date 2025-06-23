@@ -1,9 +1,9 @@
-const userService = require(`${basePath}/services/userService.js`);
-const jsencrypt = require('nodejs-jsencrypt');
-const logger = require(`${basePath}/config/logger.js`);
+import * as userService from "../services/userService.js";
+import jsencrypt from 'nodejs-jsencrypt';
+import logger from "../config/logger.js";
 
 // 로그인 처리
-exports.loginProcess = async (request, response, next) => {
+export const loginProcess = async (request, response, next) => {
 
     // 회원정보 조회 및 비밀번호체크 
     userService.getLoginUser(request.body)
@@ -34,7 +34,7 @@ exports.loginProcess = async (request, response, next) => {
  * @param {*} response 
  * @param {*} next 
  */
-exports.joinProcess = async (request, response, next) => {
+export const joinProcess = async (request, response, next) => {
 
     // 복호화 객체 생성
     const crypt = new jsencrypt.JSEncrypt();

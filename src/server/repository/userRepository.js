@@ -1,4 +1,4 @@
-const repo = require(`${basePath}/config/repository.js`);
+import * as repo from "../config/repository.js";
 
 
 /**
@@ -6,7 +6,7 @@ const repo = require(`${basePath}/config/repository.js`);
  * @param {string} userId 
  * @returns 
  */
-exports.selectUser = async (userId, conn) => {
+export const selectUser = async (userId, conn) => {
     
     // 회원정보 조회 쿼리
     return await repo.selectOne(
@@ -29,7 +29,7 @@ exports.selectUser = async (userId, conn) => {
  * @param {*} params 
  * @param {*} conn 
  */
-exports.selectUserCount = async(params, conn) => {
+export const selectUserCount = async(params, conn) => {
 
     let searchWord = '';
     switch(params?.srhType){
@@ -54,7 +54,7 @@ exports.selectUserCount = async(params, conn) => {
  * @param {*} params 
  * @param {*} conn 
  */
-exports.selectUserList = async (params, conn) => {
+export const selectUserList = async (params, conn) => {
 
     let searchWord = '';
     switch(params?.srhType){
@@ -88,7 +88,7 @@ exports.selectUserList = async (params, conn) => {
  * @param {*} user 
  * @returns 
  */
-exports.insertUser = async (user, conn) => {
+export const insertUser = async (user, conn) => {
 
     // 회원등록
     return await repo.insert(

@@ -1,16 +1,16 @@
-const logger = require(`${basePath}/config/logger.js`);
-const crypto = require('crypto');
-const jsencrypt = require(`nodejs-jsencrypt`);
-const userRepository = require(`${basePath}/repository/userRepository.js`);
-const validation = require(`${basePath}/util/validation.js`);
-const db = require(`${basePath}/config/database.js`);
+import logger from "../config/logger.js";
+import crypto from 'crypto';
+import jsencrypt from `nodejs-jsencrypt`;
+import * as userRepository from "../repository/userRepository.js";
+import * as validation from "../util/validation.js";
+import { getConnection } from "../config/database.js";
 
 /**
  * 회원체크 조회
  * @param {object} params 
  * @returns 
  */
-exports.getLoginUser = async (params) => {
+export const getLoginUser = async (params) => {
 
     // 복호화 객체 생성
     const crypt = new jsencrypt.JSEncrypt();
@@ -41,17 +41,17 @@ exports.getLoginUser = async (params) => {
  * 회원아이디로 회원정보 조회
  * @param {string} userId 
  */
-exports.getUser = userId => userRepository.selectUser(userId);
+export const getUser = userId => userRepository.selectUser(userId);
 
 /**
  * 회원등록
  * @param {object} user 
  * @returns 
  */
- exports.joinUser = async user => {
+export const joinUser = async user => {
 
     // DB연결
-    let conn = await db.getConnection();
+    let conn = await getConnection();
     // 트렌젝션
     await conn.beginTransaction();
 
@@ -97,7 +97,7 @@ exports.getUser = userId => userRepository.selectUser(userId);
  * @param {*} params.paging.no      페이지번호
  * @returns
  */
-exports.getUserList = async params => {
+export const getUserList = async params => {
     return Promise.all([
         await userRepository.selectUserCount(params),
         await userRepository.selectUserList(params),

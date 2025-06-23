@@ -1,5 +1,5 @@
 // DB - MARIADB
-const mariadb = require("mariadb");
+import mariadb from "mariadb";
 
 console.log("require database");
 
@@ -15,7 +15,7 @@ const info = {
 
 // Pool 초기화
 const pool = mariadb.createPool(info);
-exports.getConnection = async function(){
+export const getConnection = async function(){
   try{
     return await pool.getConnection();
   }catch(err){

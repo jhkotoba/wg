@@ -1,11 +1,11 @@
-const logger = require(`${basePath}/config/logger.js`);
-const utils = require(`${basePath}/config/utils.js`);
-const db = require(`${basePath}/config/database.js`);
+import logger from "./logger.js";
+import * as utils from "./utils.js";
+import { getConnection } from "./database.js";
 
 // 단건 조회 쿼리문 실행
-exports.selectOne = async (query, oConn) => {
+export const selectOne = async (query, oConn) => {
   logger.debug('\n' + query);
-  let conn = oConn ? oConn : await db.getConnection();
+  let conn = oConn ? oConn : await getConnection();
 
   try {
     let rows = await conn.query(query);    
@@ -28,9 +28,9 @@ exports.selectOne = async (query, oConn) => {
 };
 
 // 복수건 조회
-exports.selectList = async (query, oConn) => {
+export const selectList = async (query, oConn) => {
   logger.debug('\n' + query);
-  let conn = oConn ? oConn : await db.getConnection();
+  let conn = oConn ? oConn : await getConnection();
 
   try {
     return await conn.query(query);
@@ -47,9 +47,9 @@ exports.selectList = async (query, oConn) => {
 }
 
 // 저장
-exports.insert = async (query, oConn) => {
+export const insert = async (query, oConn) => {
   logger.debug('\n' + query);
-  let conn = oConn ? oConn : await db.getConnection();
+  let conn = oConn ? oConn : await getConnection();
 
   try {
     let result = await conn.query(query);
@@ -67,9 +67,9 @@ exports.insert = async (query, oConn) => {
 }
 
 // 수정
-exports.update = async (query, oConn) => {
+export const update = async (query, oConn) => {
   logger.debug('\n' + query);
-  let conn = oConn ? oConn : await db.getConnection();
+  let conn = oConn ? oConn : await getConnection();
 
   try {
     let result = await conn.query(query);
@@ -87,9 +87,9 @@ exports.update = async (query, oConn) => {
 }
 
 // 삭제
-exports.delete = async (query, oConn) => {
+export const del = async (query, oConn) => {
   logger.debug('\n' + query);
-  let conn = oConn ? oConn : await db.getConnection();
+  let conn = oConn ? oConn : await getConnection();
 
   try {
     let result = await conn.query(query);
@@ -107,7 +107,7 @@ exports.delete = async (query, oConn) => {
 }
 
 // 문자대입
-exports.string = value => utils.isEmpty(value) ? 'NULL' : `'${value}'`;
+export const string = value => utils.isEmpty(value) ? 'NULL' : `'${value}'`;
 
 // 숫자 대입
-exports.int = value => utils.isEmpty(value) ? 0 : value;
+export const int = value => utils.isEmpty(value) ? 0 : value;

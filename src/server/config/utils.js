@@ -4,7 +4,7 @@
  * @param {*} value 
  * @returns 
  */
-exports.isEmpty = value => {
+export const isEmpty = value => {
 	if(value === null || value === undefined){
 		return true;
 	}else if((typeof value === "string" && value.trim() === "")){

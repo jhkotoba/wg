@@ -1,9 +1,9 @@
 /**
  * logger 세팅
  */
- const winston = require('winston');
- const winstonDaily = require('winston-daily-rotate-file');
- const { combine, timestamp, label, printf } = winston.format;
+import winston from 'winston';
+import winstonDaily from 'winston-daily-rotate-file';
+const { combine, timestamp, label, printf } = winston.format;
  // 로그파일 저장 경로
  const logDir = `${rootPath}/logs`;
  
@@ -55,4 +55,4 @@
    ],
 });
 
-module.exports = logger;
+export default logger;

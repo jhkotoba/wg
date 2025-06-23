@@ -58,4 +58,4 @@ const sessionFilter = (request, response, next) => {
         }
     }
 }
-module.exports = sessionFilter;
+export default sessionFilter;
